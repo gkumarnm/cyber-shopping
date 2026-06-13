@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+  <div class="detail-grid">
+    <div class="detail-cover">
+      <img loading="lazy" decoding="async" src="{{ book.image_url or url_for('static', filename='images/placeholder.png') }}" alt="Cover of {{ book.title }}" />
+    </div>
+    <div class="detail-info">
+      <h2>{{ book.title }}</h2>
+      <p class="muted">by {{ book.author }}</p>
+      <p><strong>Publisher:</strong> {{ book.publisher }}</p>
+      <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+      <p class="price"><strong>Price:</strong> ${{ '%.2f'|format(book.price) }}</p>
+      <p class="rating"><strong>Rating:</strong> {{ book.rating or 'N/A' }}</p>
+      <div class="description">{{ book.description }}</div>
+
+      <form method="post" action="{{ url_for('add_to_cart', book_id=book.id) }}" aria-label="Add to cart">
+        <label for="qty">Quantity</label>
+        <input id="qty" name="quantity" type="number" value="1" min="1" />
+        <button class="btn-primary" type="submit">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

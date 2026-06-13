@@ -1,0 +1,17 @@
+.venv
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.sqlite3
+*.db
+*.env
+env/
+venv/
+.Python
+.idea/
+.vscode/
+.DS_Store
+thumbs.db
+docker-compose.override.yml

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Shop{% endblock %}
+
+{% block content %}
+  <h2>Book Store</h2>
+  <div class="hero">
+    <div class="hero-image">📚</div>
+    <div class="hero-text">
+      <h3>Curated self-improvement books — read, learn, grow</h3>
+      <p>Top sellers selected for your development.</p>
+    </div>
+  </div>
+
+  <div class="book-list">
+    {% for book in books %}
+      <div class="book-card" role="article" aria-label="{{ book.title }} by {{ book.author }}">
+        <div class="book-cover">
+          <a class="book-link" href="{{ url_for('book_detail', book_id=book.id) }}">
+            <img decoding="async" src="{{ book.image_url or url_for('static', filename='images/placeholder.png') }}" alt="Cover of {{ book.title }}" />
+          </a>
+        </div>
+        <div class="book-meta">
+          <a class="book-link" href="{{ url_for('book_detail', book_id=book.id) }}">
+            <h3 class="book-title">{{ book.title }}</h3>
+            <p class="book-author">by {{ book.author }}</p>
+          </a>
+          <p class="book-price">${{ '%.2f'|format(book.price) }}</p>
+          <p class="book-rating" aria-label="Rating">{% if book.rating %}{{ '★' * (book.rating|round(0,'floor')|int) }} {{ '%.1f'|format(book.rating) }}{% else %}N/A{% endif %}</p>
+          <form method="post" action="{{ url_for('add_to_cart', book_id=book.id) }}" aria-label="Add {{ book.title }} to cart">
+            <input type="hidden" name="quantity" value="1" />
+            <button type="submit">Add to cart</button>
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
