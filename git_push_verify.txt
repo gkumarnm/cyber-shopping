@@ -1,0 +1,43 @@
+COMMAND: C:\Program Files\Git\cmd\git.exe --version
+RC: 0
+STDOUT:
+git version 2.54.0.windows.1
+
+STDERR:
+
+------------------------------------------------------------
+COMMAND: C:\Program Files\Git\cmd\git.exe -C D:\myAI-Folder\Projects\WebAuth\git-push branch --show-current
+RC: 0
+STDOUT:
+main
+
+STDERR:
+
+------------------------------------------------------------
+COMMAND: C:\Program Files\Git\cmd\git.exe -C D:\myAI-Folder\Projects\WebAuth\git-push remote -v
+RC: 0
+STDOUT:
+origin	https://github.com/gkumarnm/cyber-shopping.git (fetch)
+origin	https://github.com/gkumarnm/cyber-shopping.git (push)
+
+STDERR:
+
+------------------------------------------------------------
+COMMAND: C:\Program Files\Git\cmd\git.exe -C D:\myAI-Folder\Projects\WebAuth\git-push status --short --branch
+RC: 0
+STDOUT:
+## main
+?? git_push_verify.txt
+
+STDERR:
+
+------------------------------------------------------------
+COMMAND: C:\Program Files\Git\cmd\git.exe -C D:\myAI-Folder\Projects\WebAuth\git-push ls-remote origin refs/heads/main
+RC: 0
+STDOUT:
+9bc370c7d78e969465fec2a3711a58d1ca63cd3c	refs/heads/main
+
+STDERR:
+
+------------------------------------------------------------
+REMOTE_MAIN_EXISTS
